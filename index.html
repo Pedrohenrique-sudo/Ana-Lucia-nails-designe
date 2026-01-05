@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <title>Arte nas Mãos | Nails Design & Studio de Luxo</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* MANTENDO SEU CSS ORIGINAL */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        :root { --rosa-principal: #ff85a2; --rosa-hover: #e06a8a; --bronze: #c29160; --bg-leve: #fffafb; --texto: #333; --branco: #ffffff; --whatsapp-color: #25d366; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-leve); color: var(--texto); line-height: 1.6; }
+        header { background: rgba(255, 255, 255, 0.98); padding: 15px 8%; box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: fixed; width: 100%; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: bold; color: var(--bronze); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+        .logo span { color: var(--rosa-principal); }
+        nav a { text-decoration: none; color: #555; margin: 0 15px; font-size: 14px; font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: var(--rosa-principal); }
+        .hero { height: 90vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 80px; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin-bottom: 20px; }
+        .cta-button { background: var(--rosa-principal); color: white; padding: 15px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.4s; display: inline-block; border: none; cursor: pointer; }
+        .cta-button:hover { background: var(--rosa-hover); transform: scale(1.05); }
+        section { padding: 80px 8%; }
+        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 50px; color: #4a4a4a; }
+        
+        .sobre-container { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .sobre-img { flex: 1; min-width: 300px; border-radius: 20px; overflow: hidden; box-shadow: 20px 20px 0px var(--rosa-principal); }
+        .sobre-img img { width: 100%; display: block; }
+        .sobre-texto { flex: 1; min-width: 300px; }
+
+        /* TABELA DE PREÇOS */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .price-card { background: white; padding: 30px; border-radius: 15px; text-align: center; border: 1px solid #eee; transition: 0.3s; }
+        .price-card h3 { font-family: 'Playfair Display', serif; color: var(--bronze); margin-bottom: 10px; }
+        .price-value { font-size: 1.5rem; color: var(--rosa-principal); font-weight: bold; display: block; margin-bottom: 15px; }
+        .price-card:hover { border-color: var(--rosa-principal); transform: translateY(-5px); }
+
+        /* FAQ */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; margin-bottom: 10px; border-radius: 8px; border: 1px solid #eee; }
+        .faq-question { padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 600; color: var(--texto); }
+        .faq-answer { padding: 0 20px 15px; color: #666; display: none; }
+
+        .grid-servicos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .card { background: white; padding: 30px; border-radius: 15px; text-align: center; border: 1px solid #eee; transition: 0.3s; }
+        .card i { font-size: 30px; color: var(--rosa-principal); margin-bottom: 15px; }
+        .card:hover { transform: translateY(-10px); border-color: var(--rosa-principal); }
+        
+        .galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 40px; }
+        .foto-item { position: relative; border-radius: 15px; overflow: hidden; height: 300px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .foto-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .foto-item:hover img { transform: scale(1.1); }
+        
+        .video-container { max-width: 400px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); background: #000; }
+        video { display: block; width: 100%; height: auto; }
+        
+        .contato-container-zap { max-width: 600px; margin: 0 auto; background: var(--branco); padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; }
+        .btn-whatsapp-agendar { background-color: var(--whatsapp-color); color: white; padding: 20px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 1.2rem; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); margin: 25px 0; }
+        
+        .cartao-contato { width: 100%; max-width: 450px; border-radius: 15px; margin: 20px auto; box-shadow: 0 8px 20px rgba(0,0,0,0.1); display: block; }
+
+        footer { background: #1a1a1a; color: #e0e0e0; padding: 80px 8% 20px; text-align: center; }
+        .footer-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .social-icons { display: flex; align-items: center; gap: 15px; margin-top: 10px; }
+        .social-icons a { font-size: 2rem; color: var(--branco); transition: 0.4s; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .social-icons a:hover { color: var(--rosa-principal); }
+        .copy { margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; text-align: center; font-size: 0.8rem; color: #777; }
+
+        .menu-toggle { font-size: 24px; color: var(--bronze); cursor: pointer; margin-right: 20px; transition: 0.3s; }
+        .sidebar { position: fixed; top: 0; left: -300px; width: 300px; height: 100%; background: var(--branco); z-index: 2000; box-shadow: 5px 0 15px rgba(0,0,0,0.1); transition: 0.4s ease; padding: 40px 30px; }
+        .sidebar.active { left: 0; }
+        .sidebar-close { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; display: none; }
+        .overlay.active { display: block; }
+
+        .zap-flutuante { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: #25d366; color: white; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 3000; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+        @media (max-width: 768px) { header { padding: 15px 5%; } nav { display: none; } .hero-content h1 { font-size: 2.5rem; } section { padding: 50px 5%; } }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/558894679366" class="zap-flutuante" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <i class="fas fa-times sidebar-close" id="closeMenu"></i>
+        <h3>Menu</h3>
+        <nav style="display: flex; flex-direction: column; margin-top: 20px;">
+            <a href="#inicio" style="margin: 10px 0;">Início</a>
+            <a href="#sobre" style="margin: 10px 0;">O Studio</a>
+            <a href="#precos" style="margin: 10px 0;">Valores</a>
+            <a href="#faq" style="margin: 10px 0;">Dúvidas</a>
+        </nav>
+    </div>
+
+    <header>
+        <div class="header-left">
+            <i class="fas fa-bars menu-toggle" id="openMenu"></i>
+            <a href="#" class="logo">ANALUCIA<span>NAILS DESIGN</span></a>
+        </div>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#sobre">O Studio</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#galeria">Trabalhos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <a href="#contato" style="background: var(--rosa-principal); color: white; padding: 8px 15px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: bold;">Agendar Agora</a>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Sua melhor versão começa pelas mãos.</h1>
+            <p>Onde a arte encontra suas mãos.</p>
+            <br>
+            <a href="#servicos" class="cta-button">Explorar Serviços</a>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="sobre-container">
+            <div class="sobre-img">
+                <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=800&q=80" alt="Nosso Studio">
+            </div>
+            <div class="sobre-texto">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Studio Analucia Nails Design</h2>
+                <p>Nosso espaço foi projetado para oferecer não apenas um serviço, mas um momento de relaxamento e cuidado.</p>
+                <br>
+                <p>✨ Proprietária Ana Lucia.<br>
+                ✨ Atendimento com hora marcada.<br>
+                ✨ Especialista em unhas de luxo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="precos" style="background-color: #fdf4f6;">
+        <h2 class="section-title">Investimento na sua Autoestima</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Alongamento Gel</h3>
+                <span class="price-value">R$ 80,00</span>
+                <p>Naturalidade e resistência.</p>
+            </div>
+            <div class="price-card">
+                <h3>Blindagem</h3>
+                <span class="price-value">R$ 80,00</span>
+                <p>Proteção para unhas naturais.</p>
+            </div>
+            <div class="price-card">
+                <h3>Manutenção</h3>
+                <span class="price-value">R$ 90,00</span>
+                <p>Renovação do brilho e formato.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <h2 class="section-title">Nossas Especialidades</h2>
+        <div class="grid-servicos">
+            <div class="card"><i class="fas fa-shield-alt"></i><h3>Blindagem</h3><p>Proteção para suas unhas.</p></div>
+            <div class="card"><i class="fas fa-gem"></i><h3>Alongamento</h3><p>Resistência em gel.</p></div>
+            <div class="card"><i class="fas fa-paint-brush"></i><h3>Esmaltação</h3><p>Brilho impecável.</p></div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <h2 class="section-title">Conheça nosso Espaço</h2>
+        <div class="video-container">
+            <video controls playsinline muted>
+                <source src="video-unhas.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="galeria-grid">
+            <div class="foto-item"><img src="1000398784.jpg"></div>
+            <div class="foto-item"><img src="nova-foto.jpg"></div>
+            <div class="foto-item"><img src="1000398792.png"></div>
+            <div class="foto-item"><img src="1000398793.png"></div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2 class="section-title">Dúvidas Frequentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">Quais os dias de atendimento? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Atendemos em dias alternados conforme escala da semana. Consulte a agenda no WhatsApp.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Aceita quais formas de pagamento? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Aceitamos Pix, Cartão de Crédito/Débito e Dinheiro.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Onde fica o Studio? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Estamos na Rua Nautilia Floriana Vieira, N°27, Ponte Nova, Boa Viagem - CE.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2 class="section-title">Agende seu Momento</h2>
+        <div class="contato-container-zap">
+            <img src="1000398960.jpg" alt="Cartão" class="cartao-contato">
+            <a href="https://wa.me/558894679366" class="btn-whatsapp-agendar" target="_blank">
+                <i class="fab fa-whatsapp"></i> AGENDAR VIA WHATSAPP
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="logo">ANALUCIA<span>NAILS</span></div>
+            <p>Elegância e técnica avançada para realçar sua autoestima.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/analucia_nails_design?igsh=ZW5xdHltaXNzeHUw" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                    <span style="font-size: 0.9rem; font-weight: 600;">@analucia_nails_design</span>
+                </a>
+            </div>
+        </div>
+        <div class="copy"><p>&copy; 2025 ANALUCIA NAILS DESIGN - Todos os direitos reservados.</p></div>
+    </footer>
+
+    <script>
+        document.getElementById('openMenu').onclick = () => {
+            document.getElementById('sidebar').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        };
+        document.getElementById('closeMenu').onclick = document.getElementById('overlay').onclick = () => {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        };
+
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.onclick = () => {
+                const answer = q.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            };
+        });
+    </script>
+</body>
+</html>
