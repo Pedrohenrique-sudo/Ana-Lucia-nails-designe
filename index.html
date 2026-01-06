@@ -226,15 +226,30 @@
     </footer>
 
     <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        // Abre o menu
         document.getElementById('openMenu').onclick = () => {
-            document.getElementById('sidebar').classList.add('active');
-            document.getElementById('overlay').classList.add('active');
-        };
-        document.getElementById('closeMenu').onclick = document.getElementById('overlay').onclick = () => {
-            document.getElementById('sidebar').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
         };
 
+        // Fecha o menu
+        const fecharMenu = () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        };
+
+        document.getElementById('closeMenu').onclick = fecharMenu;
+        document.getElementById('overlay').onclick = fecharMenu;
+
+        // FECHA O MENU AUTOMATICAMENTE AO CLICAR EM UM LINK (Para celular)
+        document.querySelectorAll('.sidebar nav a').forEach(link => {
+            link.onclick = fecharMenu;
+        });
+
+        // Lógica do FAQ
         document.querySelectorAll('.faq-question').forEach(q => {
             q.onclick = () => {
                 const answer = q.nextElementSibling;
